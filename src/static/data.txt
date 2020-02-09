@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<IDataXMLCoder version="1.0">
+    <record javaclass="com.wm.util.Values">
+        <record name="note" javaclass="com.wm.data.BasicData">
+            <value name="to">Tanveer</value>
+            <value name="from">Jani</value>
+            <value name="heading">Reminder</value>
+            <value name="body">Don't forget me this weekend!</value>
+        </record>
+    </record>
+</IDataXMLCoder>

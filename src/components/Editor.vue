@@ -1,5 +1,5 @@
 <template>
-<div class="container is-fluid">
+<div class="container">
     <div class="notification">
         This container is
         <strong>centered</strong> on desktop.
@@ -8,14 +8,14 @@
         <div class="column">
             <div class="field">
                 <div class="control">
-                    <textarea v-model="inputTxt" class="textarea is-large" placeholder="Large textarea" rows="10"></textarea>
+                    <textarea v-model="inputTxt" class="textarea" placeholder="Large textarea" rows="10"></textarea>
                 </div>
             </div>
         </div>
         <div class="column">
             <div class="field">
                 <div class="control">
-                    <textarea class="textarea is-large" placeholder="Large textarea" rows="10"></textarea>
+                    <textarea v-model="outputTxt" class="textarea" placeholder="Large textarea" rows="10"></textarea>
                 </div>
             </div>
         </div>
@@ -25,6 +25,7 @@
 </template>
 
 <script>
+//import axios from "axios"
 export default {
   data() {
     return {
@@ -35,18 +36,36 @@ export default {
     };
   },
   methods: {
-      async transform() {
-         let url = "https://j559exy6uh.execute-api.us-east-1.amazonaws.com/prod/transform";
-         let headers = new Headers();
-         headers.set('content-type', 'application/xml');
-         headers.set('x-request-type', 'xml-idata');
-         headers.set('Authorization', 'Basic ' + btoa(this.username + ":" + this.password));
-         let response = await fetch(url, { credentials: 'include', method: 'POST', headers: headers, body: this.inputTxt } )
-         console.log(response);
-         if ( response.ok == true) {
-             let bodyTxt = response.text();
-             this.outputTxt = bodyTxt;
-         }
+       transform() {
+        //  let url = "https://piktl7s9ae.execute-api.us-east-1.amazonaws.com/prod/transform";
+        //let username = this.username;
+        //let password = this.password;
+        //const token = Buffer.from(`${username}:${password}`, 'utf8').toString('base64')
+    //     axios.post(url, {
+    //        headers: {
+    //            'Content-Type': 'application/xml',
+    //            'x-request-type': 'xml-idata',
+    //            //'Authorization': `Basic ${token}`
+    //        },
+    //        body: this.inputTxt
+    //     })
+    //    .then(function (response) {
+    //     console.log(response);
+    //     })
+    //    .catch(function (error) {
+    //     console.log(error);
+    //     });
+      this.outputTxt = `<?xml version="1.0" encoding="UTF-8"?>
+<IDataXMLCoder version="1.0">
+    <record javaclass="com.wm.util.Values">
+        <record name="note" javaclass="com.wm.data.BasicData">
+            <value name="to">Tanveer</value>
+            <value name="from">Jani</value>
+            <value name="heading">Reminder</value>
+            <value name="body">Don't forget me this weekend!</value>
+        </record>
+    </record>
+</IDataXMLCoder>`
       }
   }
 };
