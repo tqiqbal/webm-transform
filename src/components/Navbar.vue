@@ -1,16 +1,13 @@
 <template>
     <b-navbar>
-        <template slot="brand">
+        <!-- <template slot="brand">
             <b-navbar-item >
-                <img
-                    src="https://raw.githubusercontent.com/buefy/buefy/dev/static/img/buefy-logo.png"
-                    alt="Lightweight UI components for Vue.js based on Bulma"
-                >
+               Perfectcube
             </b-navbar-item>
-        </template>
+        </template> -->
         <template slot="start">
             <b-navbar-item href="#">
-                Home
+                <strong>Perfectcube</strong>
             </b-navbar-item>
             <b-navbar-item href="#">
                 Documentation
@@ -23,19 +20,6 @@
                     Contact
                 </b-navbar-item>
             </b-navbar-dropdown>
-        </template>
-
-        <template slot="end">
-            <b-navbar-item tag="div">
-                <div class="buttons">
-                    <a class="button is-primary">
-                        <strong>Sign up</strong>
-                    </a>
-                    <a class="button is-light">
-                        Log in
-                    </a>
-                </div>
-            </b-navbar-item>
         </template>
     </b-navbar>
 </template>

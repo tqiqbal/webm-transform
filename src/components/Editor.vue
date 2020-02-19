@@ -20,7 +20,24 @@
             </div>
         </div>
     </div>
-  <b-button type="is-primary" @click="transform">Primary</b-button>
+    <div class="block">
+            <b-radio v-model="radio"
+                name="name"
+                native-value="xml-idata">
+                XML to IData
+            </b-radio>
+            <b-radio v-model="radio"
+                name="name"
+                native-value="idata-xml">
+                IData to XML
+            </b-radio>
+            <!-- <b-radio v-model="radio"
+                name="name"
+                native-value="xml-json">
+                XML to JSON
+            </b-radio> -->
+        </div>
+  <b-button type="is-primary" @click="transform">Convert</b-button>
 </div>
 </template>
 
@@ -72,7 +89,8 @@ export default {
       codeMirrorInput: "",
       codeMirrorOutput: "",
       isLoading: false,
-      isFullPage: true
+      isFullPage: true,
+      radio: "xml-idata"
     };
   },
   methods: {
@@ -81,7 +99,7 @@ export default {
       this.isLoading = true;
         let config = {
             baseURL: 'https://webmapi-u4kuttf3wq-uc.a.run.app',
-            headers: { 'Content-Type': 'text/xml', 'x-request-type': 'xml-idata' },
+            headers: { 'Content-Type': 'text/xml', 'x-request-type': this.radio },
             timeout: 60000,
             withCredentials: false,
             auth: {
